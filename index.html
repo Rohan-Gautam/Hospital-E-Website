@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Management E-commerce Website</title>
+  <style>
+    /* Reset and global styles */
+    body {
+        
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #0072ed ; /* Light background color */
+    }
+
+    /* Header styles */
+    header {
+      background: linear-gradient(to bottom, #298ef9, #0f7df2); 
+      color: #fff;
+      padding: 2vh 20px;
+      text-align: center;
+    }
+
+    nav ul {
+        font-size: 3vh;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+    color: #0a0a7d; /* Dark blue color */
+    text-shadow: 0 2px 4px rgb(139, 214, 255); /* Text shadow effect */
+    transition: color 0.3s, text-shadow 0.3s; /* Smooth transition */
+    }
+
+    /* Hero section styles */
+    .hero {
+      height: 60vh;
+      display: flex;
+      justify-content: space-between; /* Align content to the sides */
+      align-items: center; /* Center vertically */
+      padding-left: 5vw;
+      padding-right: 5vw;
+      gap: 6vw;
+      background: linear-gradient(to bottom, #0f7df2,  #007BFF); 
+      color: #fff;
+    }
+
+    .hero-text {
+      flex: 1; /* Take up remaining space */
+      max-width: 50%; /* Limit width for responsiveness */
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin: 0 0 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-text button {
+        font-size: 2vh;
+      padding: 1vh 1vw;
+      background-color: #fff;
+      color: #007BFF;
+      border: none;
+      border-radius: 5vh;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-text button:hover {
+      background-color: #0056b3;
+      color: #fff;
+      transform: translateY(-2vh);
+      transform:scale(1.1);
+      box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hero-image img {
+      max-width: 100%; /* Ensure image fits container */
+      border-radius: 4vh; /* Rounded corners for image */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      transition: transform 0.8s, box-shadow 0.3s;
+    }
+
+    .hero-image img:hover{
+        transform: translateY(-2vh);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-image:hover{
+        transform:scale(1.1);
+    }
+
+    /* Features section styles */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      background: linear-gradient(to bottom, #007BFF, #0072ed); 
+    }
+
+    .feature {
+      background-color: #f4f4f4b3; /* Light gray background for features */
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature:hover {
+        background-color: rgb(52, 52, 52);
+        color:white;
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+    }
+
+    .feature i {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #007BFF;
+    }
+
+    .feature h3 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+
+    .feature p {
+      font-size: 1rem;
+    }
+
+    /* Appointment Form styles */
+    .appointment-form {
+        background-color: rgba(204, 204, 204, 0.535);
+      padding: 40px 20px;
+      border: 0.3vh solid black;
+      border-radius: 4vh;
+      color: white;
+      width: 80%;
+      max-width: 600px;
+      margin: 40px auto;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 1);
+    }
+
+    .appointment-form h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .appointment-form label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+
+    }
+
+    .appointment-form input, .appointment-form select {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: rgba(175, 175, 175, 0.686);
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 1.6vh;
+    }
+
+    .appointment-form input[type="submit"] {
+      background-color: #007BFF;
+      color: #fff;
+      border-radius: 2vh;
+      font-size: 2vh;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .appointment-form input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    /* Testimonials section styles */
+    .testimonials {
+        background: linear-gradient(to bottom, #0072ed, #0060c6); 
+      background-color: #0060c6 ;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .testimonial {
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: rgba(204, 204, 204, 0.535);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .testimonial:hover {
+        background-color: rgb(52, 52, 52);
+        color:white;
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .testimonial p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .testimonial strong {
+      font-weight: bold;
+    }
+
+    /* Emergency Contact section styles */
+    .emergency-contact {
+        background: linear-gradient(to bottom, #0060c6, #0051a7); 
+      background-color: #0051a7;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .emergency-contact h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .emergency-contact p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #000000;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Welcome to MY Hospital</h1>
+      <p>Get the best medical care at an affordable price. We are committed to providing compassionate care and improving the health of our community.</p>
+      <button>Book an Appointment</button>
+    </div>
+    <div class="hero-image">
+      <img src="https://clipart-library.com/images/di9rk5KAT.jpg" alt="hospital graphic picture">
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature">
+      <i class="fas fa-stethoscope"></i>
+      <h3>General Health Checkup</h3>
+      <p>Get a comprehensive health checkup from our expert doctors</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-pills"></i>
+      <h3>Medicine Delivery</h3>
+      <p>Get your medicines delivered right at your doorstep</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-hospital"></i>
+      <h3>Hospital Services</h3>
+      <p>Get admitted to our hospital for advanced medical care</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-user-md"></i>
+      <h3>Specialist Consultations</h3>
+      <p>Consult with specialized doctors for complex health issues</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-ambulance"></i>
+      <h3>Emergency Services</h3>
+      <p>24/7 emergency medical services for urgent medical needs</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-calendar-alt"></i>
+      <h3>Online Appointment Booking</h3>
+      <p>Book your appointments online for convenience</p>
+    </div>
+  </section>
+
+  <!-- Appointment Form -->
+  <section class="appointment-form">
+    <h2>Book an Appointment</h2>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required><br><br>
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" required><br><br>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required><br><br>
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" required><br><br>
+      <label for="doctor">Select Doctor:</label>
+      <select id="doctor" name="doctor" required>
+        <option value="Dr. Sharma">Dr. Sharma</option>
+        <option value="Dr. Jagjit">Dr. Jagjit</option>
+        <option value="Dr. Lakhan">Dr. Lakhan</option>
+      </select><br><br>
+      <input type="submit" value="Book Appointment">
+    </form>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h2 style="color: white;">What our Patients say about Us-</h2>
+    <div class="testimonial">
+      <p>"Excellent service and caring staff. Highly recommend MY Hospital!"</p>
+      <p><strong>- some patient</strong></p>
+    </div>
+    <div class="testimonial">
+      <p>"The doctors here are very knowledgeable and attentive to patient needs."</p>
+      <p><strong>- some other patient</strong></p>
+    </div>
+  </section>
+
+  <!-- Emergency Contact Section -->
+  <section class="emergency-contact">
+    <h2>Emergency Contact Information</h2>
+    <p>In case of emergencies, please contact:</p>
+    <p>Emergency Number: <strong>1234567890</strong></p>
+    <p>Address: <strong>building, City, State, Zip Code</strong></p>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2024 Rohan Gautam. All rights reserved.</p>
+  </footer>
+</body>
+</html>
